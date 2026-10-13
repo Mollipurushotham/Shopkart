@@ -1,7 +1,9 @@
-import './ProductCard.css';
+import style from './ProductCard.module.css'
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   const {
+    id,
     title,
     description,
     brand,
@@ -23,32 +25,40 @@ const ProductCard = ({ product }) => {
   const hasHalfStar = averageRating - fullStars >= 0.5;
 
   return (
-    <div className="product-card">
-      <div className="product-image-wrapper">
+    <div className={style.productCard}>
+      <div className={style.productImageWrapper}>
         <img
           src={thumbnail}
           alt={title}
-          className="product-image"
+          className={style.productImage}
         />
       </div>
 
-      <div className="product-card-body">
-        <span className="product-brand">
+      <div className={style.productCardBody}>
+        <span className={style.productBrand}>
           {brand || "Featured"}
         </span>
 
-        <h5 className="product-title">{title}</h5>
+        <Link 
+        to = {`/products/${id}`}
+        className={style.noDecoration} 
+        >
 
-        <p className="product-description">
+        <h5 className={style.productTitle}>
+          {title}
+        </h5>
+        </Link>
+
+        <p className={style.productDescription}>
           {description}
         </p>
 
-        <div className="product-rating">
-          <div className="stars">
+        <div className={style.productRating}>
+          <div className={style.stars}>
             {[...Array(5)].map((_, index) => {
               if (index < fullStars) {
                 return (
-                  <span key={index} className="star filled">
+                  <span key={index} className={`${style.star} ${style.filled}`}>
                     ★
                   </span>
                 );
@@ -56,45 +66,43 @@ const ProductCard = ({ product }) => {
 
               if (index === fullStars && hasHalfStar) {
                 return (
-                  <span key={index} className="star half">
+                  <span key={index} className={`${style.star} ${style.half}`}>
                     ★
                   </span>
                 );
               }
 
               return (
-                <span key={index} className="star">
+                <span key={index} className={style.star}>
                   ★
                 </span>
               );
             })}
           </div>
 
-          <span className="rating-number">
+          <span className={style.ratingNumber}>
             {roundedRating}
           </span>
 
-          <span className="review-count">
+          <span className={style.reviewCount}>
             ({reviews.length})
           </span>
         </div>
 
-        <div className="product-price">
-          <span className="price">${price}</span>
+        <div className={style.productPrice}>
+          <span className={style.price}>${price}</span>
 
-          <span className="discount">
+          <span className={style.discount}>
             -{discountPercentage}%
           </span>
         </div>
 
         <div
-          className={
-            stock > 0
-              ? "product-stock available"
-              : "product-stock unavailable"
-          }
+          className={`${style.productStock} ${
+            stock > 0 ? style.available : style.unavailable
+          }`}
         >
-          <span className="stock-dot"></span>
+          <span className={style.stockDot}></span>
 
           {stock > 0
             ? `${stock} units available`
@@ -102,7 +110,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <button
-          className="product-button"
+          className={style.productButton}
           disabled={stock <= 0}
         >
           <span>
@@ -110,7 +118,7 @@ const ProductCard = ({ product }) => {
           </span>
 
           {stock > 0 && (
-            <span className="button-arrow">→</span>
+            <span className={style.buttonArrow}>→</span>
           )}
         </button>
       </div>

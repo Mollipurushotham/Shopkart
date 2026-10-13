@@ -1,4 +1,4 @@
-import { getProducts } from "../productApi";
+import { getProducts, getProduct } from "../productApi";
 import { useEffect, useState } from "react";
 
 export function useProducts() {
