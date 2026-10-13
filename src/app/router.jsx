@@ -2,13 +2,14 @@ import HomePage from "../pages/HomePage/Homepage";
 import ContactPage from "../pages/ContactPage/ContactPage";
 import AboutPage from "../pages/AboutPage/AboutPage";
 // Product
-import ProductsPage from "../pages/Products/ProductPages/ProductPages";
+import ProductPage from "../pages/Products/ProductPage/ProductPage";
 
 import NotFound from "../pages/NotFound/NotFound";
 
 import PageLayout from "../components/layout/PageLayout/PageLayout";
 
 import { createBrowserRouter } from "react-router-dom";
+import ProductDetailsPage from "../pages/Products/ProductDetailsPages/ProductDetailsPages";
 
 export const router = createBrowserRouter([
     {
@@ -19,9 +20,10 @@ export const router = createBrowserRouter([
             { path: "contact", element: <ContactPage /> },
             { path: "about", element: <AboutPage /> },
             {
-                path: "Products",
+                path: "products",
                 children: [
-                    { index: true, element: <ProductsPage /> },
+                    { index: true, element: <ProductPage /> },
+                    { path: ":ProductId", element: <ProductDetailsPage /> }
                 ]
             }
         ]

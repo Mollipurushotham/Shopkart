@@ -1,4 +1,4 @@
-import { getProducts } from "../productsApi";
+import { getProducts } from "../productApi";
 import { useEffect, useState } from "react";
 
 export function useProducts() {
@@ -26,7 +26,7 @@ export function useProducts() {
                     const data = await getProducts();
 
                     if (active) {
-                        setProducts(data);
+                        setProducts(data.products);
                     }
                 }
                 // if products loading failed 
@@ -51,6 +51,55 @@ export function useProducts() {
             // dependency array -> empty here
         }, []);
     return { products, loading, error };
+}
+
+// Fetching single product
+export function useProduct(productId) {
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        let active = true;
+
+        async function loadProduct() {
+            try {
+                setLoading(true);
+                setError("");
+                setProduct(null);
+
+                if (!productId) {
+                    throw new Error("Product ID is missing");
+                }
+
+                const data = await getProduct(productId);
+
+                if (active) {
+                    setProduct(data);
+                }
+            } catch (err) {
+                if (active) {
+                    setError(
+                        err?.response?.data?.message ||
+                        err.message ||
+                        "Failed to load product"
+                    );
+                }
+            } finally {
+                if (active) {
+                    setLoading(false);
+                }
+            }
+        }
+
+        loadProduct();
+
+        return () => {
+            active = false;
+        };
+    }, [productId]);
+
+    return { product, loading, error };
 }
 
 

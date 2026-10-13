@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const axiosClient =  axios.create({
-    baseURL: "http://fakestoreapi.come",
+const apiClient =  axios.create({
+    baseURL: "http://dummyjson.com/",
     timeout: 10000,
     headers: {
         "Content-Type": "application/json",
