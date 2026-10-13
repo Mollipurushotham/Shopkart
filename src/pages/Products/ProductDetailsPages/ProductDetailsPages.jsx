@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useProduct } from "../../../features/products/hooks/useProducts";
-import styles from "../../../pages/Products/ProductDetailsPages/ProductDetails.module.css";
+import styles from "./ProductDetails.module.css";
 
 const ProductDetailsPage = () => {
     const { productId } = useParams();
