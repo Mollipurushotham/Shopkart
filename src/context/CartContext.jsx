@@ -17,16 +17,65 @@ function loadCart(){
     }
 }
 
-export function Cartprovider({childern}){
-    const [cartItem, setCartItem ] = useState(loadCart);
+export function CartProvider({childern}){
+    const [cartItems, setCartItem ] = useState(loadCart);
 
     useEffect(() => {
         // whenever cartItem state is update ovrwrite the existing localstorage item for cart
         localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItem))
-    },[cartItem]);
+    },[cartItems]);
 
-    function addToCart(products){
+    function addToCart(product){
+        setCartItem((currentItem) => {
+            // Dealing with the case of item alredy in cart
+            const existingItem = currentItem.find((item) => item.id == product.id);
+
+            if (existingItem){
+                // increase quantiy of the iteam and update cart contex
+                return currentItem.map((item) => item.id == product.id ? {...item, quantity: item.quantity + 1} : item); 
+            }
+            // In case the item was not in cart alredy, I'll return the existing arry of item added with the new item
+            return [
+                ...currentItem,
+                {
+                    id : product.id,
+                    title: product.title,
+                    price : product.price,
+                    thumbnall : product.thumbnall,
+                    quantity : 1
+                }
+            ];
+        });
         
     }
+
+    // Remove from Cart
+    function removeFromCart(productId)  {
+        setCartItem((currentItem) => currentItem.filter((item) => item.id !== productId));
+    }
+
+    // Update Cart Quantiy
+    function updateQuantity(productId, quantity){
+        if (quantity <= 0){
+            removeFromCart(productId);
+            return; // exiting the function
+        }
+        
+        setCartItem((currentItems) => currentItems.map((item) => item.id === productId ? {...item, quantity} : item));
+    }
+
+    // clear Cart
+    function clearCart(){
+        setCartItem([]);
+    }
+
+    // cartCount, cartTotal
+    const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity,0);
+
+
+    // Setup the value for contex, use useMemo
+
+    // return the cartContext provider
 
 }
