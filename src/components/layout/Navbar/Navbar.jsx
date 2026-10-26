@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
+import { useCart } from "../../../features/cart/hooks/useCart";
 
 
 const Navbar = () => {
+
+    const { cartCount} = useCart();
     return (
         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div className="container-fluid">
@@ -22,6 +25,9 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/products">Products</NavLink>
+                        </li>
+                         <li className="nav-item">
+                            <NavLink className="nav-link" to="/Cart">My Cart {(cartCount)}</NavLink>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

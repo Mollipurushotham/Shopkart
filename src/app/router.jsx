@@ -2,6 +2,7 @@ import HomePage from "../pages/HomePage/HomePage";
 
 import ContactPage from "../pages/ContactPage/ContactPage";
 import AboutPage from "../pages/AboutPage/AboutPage";
+import CartPage from "../pages/Cartpage/CartPage";
 // Product
 import ProductPage from "../pages/Products/ProductPage/ProductPage";
 
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
             { index: true, element: <HomePage /> },
             { path: "contact", element: <ContactPage /> },
             { path: "about", element: <AboutPage /> },
+            { path: "Cart", element: <CartPage /> },
             {
                 path: "products",
                 children: [

@@ -1,7 +1,9 @@
 import style from './ProductCard.module.css'
 import { Link } from 'react-router-dom';
+import { useCart } from '../../../cart/hooks/useCart';
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useCart();
   const {
     id,
     title,
@@ -17,7 +19,7 @@ const ProductCard = ({ product }) => {
   const averageRating =
     reviews.length > 0
       ? reviews.reduce((sum, review) => sum + review.rating, 0) /
-        reviews.length
+      reviews.length
       : 0;
 
   const roundedRating = averageRating.toFixed(1);
@@ -39,14 +41,14 @@ const ProductCard = ({ product }) => {
           {brand || "Featured"}
         </span>
 
-        <Link 
-        to = {`/products/${id}`}
-        className={style.noDecoration} 
+        <Link
+          to={`/products/${id}`}
+          className={style.noDecoration}
         >
 
-        <h5 className={style.productTitle}>
-          {title}
-        </h5>
+          <h5 className={style.productTitle}>
+            {title}
+          </h5>
         </Link>
 
         <p className={style.productDescription}>
@@ -98,9 +100,8 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div
-          className={`${style.productStock} ${
-            stock > 0 ? style.available : style.unavailable
-          }`}
+          className={`${style.productStock} ${stock > 0 ? style.available : style.unavailable
+            }`}
         >
           <span className={style.stockDot}></span>
 
@@ -112,6 +113,7 @@ const ProductCard = ({ product }) => {
         <button
           className={style.productButton}
           disabled={stock <= 0}
+          onClick={() => addToCart(product)}
         >
           <span>
             {stock > 0 ? "Add to Cart" : "Unavailable"}

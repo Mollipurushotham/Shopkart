@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
 // Initializaing the cartcontext using createcontext()
 export const CartContext = createContext(null);
@@ -17,12 +17,12 @@ function loadCart() {
     }
 }
 
-export function CartProvider({ childern }) {
+export function CartProvider({ children }) {
     const [cartItems, setCartItem] = useState(loadCart);
 
     useEffect(() => {
         // whenever cartItem state is update ovrwrite the existing localstorage item for cart
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItem))
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
     }, [cartItems]);
 
     function addToCart(product) {
@@ -89,12 +89,10 @@ export function CartProvider({ childern }) {
     )
 
     // return the cartContext provider
-    return(
-        <CartContextProvider.provider value = {value}>
-            {childern}
-        </CartContextProvider.provider>
+    return (
+        <CartContext.Provider value={value}>
+            {children}
+        </CartContext.Provider>
     );
 
 }
-
-

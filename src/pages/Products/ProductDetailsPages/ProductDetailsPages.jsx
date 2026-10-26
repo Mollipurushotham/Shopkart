@@ -1,5 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useProduct } from "../../../features/products/hooks/useProducts";
+
+import { useCart } from "../../../features/cart/hooks/useCart";
 import styles from "./ProductDetails.module.css";
 
 const ProductDetailsPage = () => {
@@ -7,6 +9,7 @@ const ProductDetailsPage = () => {
 
     // Fetch the product using the ID from the URL
     const { product, loading, error } = useProduct(productId);
+    const { addToCart } = useCart();
 
     // Loading state
     if (loading) {
@@ -180,6 +183,7 @@ const ProductDetailsPage = () => {
                             type="button"
                             className={`btn btn-primary ${styles.addToCartButton}`}
                             disabled={product.stock === 0}
+                                onClick = {() => addToCart(product)}
                         >
                             Add to cart
                         </button>
