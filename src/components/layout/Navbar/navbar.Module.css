@@ -1,0 +1,108 @@
+
+/* ===== PUBG DARK NAVBAR ===== */
+
+.navbar {
+    background: #11160e !important;
+    border-bottom: 3px solid #c5a34a !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Q-SHOP BRAND */
+.brand {
+    color: #e5c45b !important;
+    background: transparent !important;
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.brand:hover,
+.brand:focus {
+    color: #ffffff !important;
+    background: transparent !important;
+    text-shadow: 0 0 8px #c5a34a;
+}
+
+/* HOME, ABOUT, CONTACT, PRODUCTS, CART */
+.navLink {
+    background: #171d13 !important;
+    color: #c5a34a !important;
+    border: 1px solid #596440 !important;
+    border-radius: 3px !important;
+    padding: 10px 14px !important;
+    margin: 0 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.25s ease;
+}
+
+.navLink:hover {
+    background: #c5a34a !important;
+    color: #11160e !important;
+    border-color: #e5c45b !important;
+}
+
+/* ACTIVE NAVIGATION */
+.active {
+    background: #303b20 !important;
+    color: #ffe08a !important;
+    border-color: #c5a34a !important;
+}
+
+/* CART */
+.cart {
+    color: #e5c45b !important;
+}
+
+/* SEARCH INPUT */
+.searchInput {
+    background: #171d13 !important;
+    color: #ffffff !important;
+    border: 1px solid #596440 !important;
+    border-radius: 3px !important;
+}
+
+.searchInput::placeholder {
+    color: #b9bba9 !important;
+    opacity: 1;
+}
+
+.searchInput:focus {
+    background: #171d13 !important;
+    color: #ffffff !important;
+    border-color: #e5c45b !important;
+    box-shadow: 0 0 8px #c5a34a55 !important;
+}
+
+/* SEARCH BUTTON - DARK WITH GOLD TEXT */
+.searchButton {
+    background: #171d13 !important;
+    color: #e5c45b !important;
+    border: 1px solid #c5a34a !important;
+    border-radius: 3px !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 9px 17px !important;
+    transition: all 0.25s ease;
+}
+
+.searchButton:hover,
+.searchButton:focus {
+    background: #c5a34a !important;
+    color: #11160e !important;
+    border-color: #e5c45b !important;
+    box-shadow: 0 0 8px #c5a34a66;
+}
+
+/* MOBILE MENU */
+.toggler {
+    border: 1px solid #c5a34a !important;
+}
+
+@media (max-width: 991px) {
+    .navLink {
+        margin: 4px 0;
+    }
+}

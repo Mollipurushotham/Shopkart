@@ -1,0 +1,67 @@
+/* PUBG Products Page Theme */
+
+.page {
+    min-height: 100vh;
+    padding: 35px 0;
+    background: linear-gradient(180deg, #151a12, #222b1b, #151a12);
+    color: #e0e0ce;
+}
+
+/* Page heading */
+.heading {
+    color: #e5c45b;
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #c5a34a;
+    padding-bottom: 12px;
+    margin-bottom: 28px !important;
+    text-shadow: 0 0 8px rgba(197, 163, 74, 0.2);
+}
+
+/* Loading section */
+.loading {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #e5c45b;
+    font-weight: 600;
+}
+
+.spinner {
+    color: #c5a34a;
+}
+
+/* Error message */
+.error {
+    color: #ff7777;
+    text-align: center;
+    padding: 30px;
+}
+
+/* Product grid */
+.productGrid {
+    row-gap: 24px;
+}
+
+/* Optional styling for each product column */
+.productColumn {
+    transition: transform 0.25s ease;
+}
+
+.productColumn:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 576px) {
+    .page {
+        padding: 24px 0;
+    }
+
+    .heading {
+        font-size: 26px;
+    }
+}
