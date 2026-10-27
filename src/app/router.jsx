@@ -2,7 +2,7 @@ import HomePage from "../pages/HomePage/HomePage";
 
 import ContactPage from "../pages/ContactPage/ContactPage";
 import AboutPage from "../pages/AboutPage/AboutPage";
-import CartPage from "../pages/Cartpage/CartPage";
+import CartPage from "../pages/CartPage/CartPage";
 // Product
 import ProductPage from "../pages/Products/ProductPage/ProductPage";
 

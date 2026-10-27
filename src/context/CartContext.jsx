@@ -41,7 +41,7 @@ export function CartProvider({ children }) {
                     id: product.id,
                     title: product.title,
                     price: product.price,
-                    thumbnall: product.thumbnall,
+                    thumbnail: product.thumbnail || product.thumbnall,
                     quantity: 1
                 }
             ];
