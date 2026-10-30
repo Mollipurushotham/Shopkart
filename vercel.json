@@ -1,0 +1,7 @@
+{"$schema": "http://openapi.vercel.sh/vercel.json",
+ "rewites" : [
+    {
+        "source" : "/(.*)",
+        "destination" : "/index.html"
+    }
+ ]}
